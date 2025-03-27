@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ personnage.nom }}</title>
+    {% load django_bootstrap5 %}
+</head>
+<body>
+    <div>Attributs de {{ personnage.nom }}</div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Attribut</th>
+                    <th>Nombre de points</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for attribut in attributs_personnage %}
+                    <tr>
+                        <td>{{ attribut.nom }}</td>
+                        <td>{{ attribut.points }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

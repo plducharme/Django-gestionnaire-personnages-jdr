@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attributs de {{ personnage.nom }}</title>
+</head>
+<body>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+    <div>Veuillez ajouter dix points pour {{ personnage.nom }}</div>
+    <div>
+    <form action="{% url 'ajout_attributs' %}" method="post">
+    {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Attribut</th>
+                    <th>Nombre de points</th>
+                    <th>Modificateur de classe</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+
+                {% for attribut in attributs %}
+                    <tr>
+                        <td><label for="{{ attribut.nom }}">{{ attribut.nom }}</label></td>
+                        <td><input type="text" name="{{ attribut.nom }}" id="{{ attribut.nom }}" value="3"></td>
+                        <td>
+                            {% for m in modificateurs_classe  %}
+                                {% if attribut.nom == m.attribut.nom %}
+                                    ( {{ m.valeur }} )
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+        <button type="submit">Valider</button>
+    </form>
+    </div>
+
+
+
+
+</body>
+</html>

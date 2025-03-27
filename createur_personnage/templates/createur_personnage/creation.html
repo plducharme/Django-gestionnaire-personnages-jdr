@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Création d'un nouveau personnage</title>
+    {% load django_bootstrap5 %}
+</head>
+<body>
+    <h1>Création d'un nouveau personnage</h1>
+    <form action="{% url 'ajout_personnage' %}" method="post">
+        {% csrf_token %}
+        <label for="nom">Nom</label>
+        <input type="text" name="nom" id="nom">
+        {% for classe in classes_personnages %}
+            <label for="classe">{{ classe.nom }}</label>
+            <input type="radio" name="classe" id="classe" value="{{ classe.id }}"/>
+        {% endfor %}
+        <button type="submit">Créer le personnage</button>
+    </form>
+</body>
+</html>
