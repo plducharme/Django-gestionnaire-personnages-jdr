@@ -15,10 +15,12 @@
         {% csrf_token %}
         <label for="nom">Nom</label>
         <input type="text" name="nom" id="nom">
+        <!-- CSS scrollable-container-class provenant de static/createur_personnage/css/base.css -->
         <div class="scrollable-container-classes">
-            <ul>
+            <ul class="list-group">
+            <!-- list-group et list-group-item provenant de django_bootstrap5 -->
             {% for classe in classes_personnages %}
-                <li>
+                <li class="list-group-item">
                     <label for="classe">{{ classe.nom }}</label>
                     <input type="radio" name="classe" id="classe" value="{{ classe.id }}"/>
                 </li>
