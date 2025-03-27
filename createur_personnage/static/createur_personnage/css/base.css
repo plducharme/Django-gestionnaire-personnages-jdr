@@ -1,0 +1,19 @@
+.scrollbar-y {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.scrollbar-x {
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.scrollbar-always-visible {
+    overflow: scroll;
+}
+
+.scrollable-container-classes {
+    overflow: scroll;
+    width: 200px;
+    height: 250px;
+}

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Création d'un nouveau personnage</title>
     {% load django_bootstrap5 %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'createur_personnage/css/base.css' %}">
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 </head>
 <body>
     <h1>Création d'un nouveau personnage</h1>
@@ -11,10 +15,16 @@
         {% csrf_token %}
         <label for="nom">Nom</label>
         <input type="text" name="nom" id="nom">
-        {% for classe in classes_personnages %}
-            <label for="classe">{{ classe.nom }}</label>
-            <input type="radio" name="classe" id="classe" value="{{ classe.id }}"/>
-        {% endfor %}
+        <div class="scrollable-container-classes">
+            <ul>
+            {% for classe in classes_personnages %}
+                <li>
+                    <label for="classe">{{ classe.nom }}</label>
+                    <input type="radio" name="classe" id="classe" value="{{ classe.id }}"/>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
         <button type="submit">Créer le personnage</button>
     </form>
 </body>
